@@ -12,9 +12,9 @@ const postForm = {
     <p ng-click="$ctrl.closeForm();">X</p>
      <h4>New Post</h4>
      <label>Title</label>
-     <input type="text" ng-model="$ctrl.newPost.title">
+     <input expandon-focus type="text" ng-model="$ctrl.newPost.title">
      <label>Thought</label>
-     <textarea ng-model="$ctrl.newPost.thought"></textarea>
+     <textarea expandon-focus ng-model="$ctrl.newPost.thought"></textarea>
      <button>Add</button>
    </form>
    ` ,
@@ -24,10 +24,11 @@ controller: function() {
     const vm = this;
     vm.showForm = () => {
     vm.show = true;
+};
     vm.closeForm = () => {
         vm.show = false;
         vm.newPost = {};
-      }; 
+       
     }
 }
 }
