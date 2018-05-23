@@ -1,30 +1,27 @@
 "use strict";
 
-const items = {
-  
+const socialPosts = {
   template: `
-  <button ng-click="$ctrl.expandonFocus();">Add Post</button>
-  <post ng-repeat="post in $ctrl.items" post="post"> </post>
+  <h1> My Thoughts</h1>
+  <post-form add-post="$ctrl.addPost(newPost);"><post-form>
+  <section>
+    <posts ng-repeat="post in $ctrl.myPosts" post="post"></posts>
+  </section>
   `,
 
 
   controller: function () {
-    
     const vm = this;
-    vm.items = [
-      {
-        title: "First Post", 
-        body: "stuff stuff stuff"
-      },
-      {
-        title: "Second Post", 
-        body: "stuff stuff stuff"
-      },
-      {
-        title: "Third Post", 
-        body: "stuff stuff stuff"
-      }
-    ];
-
+      vm.myPosts= [];
+      vm.addPost = (newPost) => {
+        vm.myPosts.push({
+          title: newPost.title,
+          thought: newPost.thought
+        });
   }
 }
+};
+
+angular
+.module ("app")
+.component("socialPosts", socialPosts)
